@@ -20,7 +20,7 @@ app.use(logger);
 const server = require("http").Server(app);
 io = module.exports = require("socket.io")(server, {
   cors: {
-    origin: ["https://app.scalez.in", "https://admin.scalez.in", "http://localhost:3005"],
+    origin: ["https://app.scalez.in", "https://admin.scalez.in", "https://api.scalez.in", "http://localhost:3005"],
     methods: ["GET", "POST"],
     credentials: true
   },
