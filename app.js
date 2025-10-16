@@ -18,7 +18,14 @@ logger = (req, res, next) => {
 };
 app.use(logger);
 const server = require("http").Server(app);
-io = module.exports = require("socket.io")(server);
+io = module.exports = require("socket.io")(server, {
+  cors: {
+    origin: ["https://app.scalez.in", "https://admin.scalez.in", "http://localhost:3005"],
+    methods: ["GET", "POST"],
+    credentials: true
+  },
+  transports: ["websocket", "polling"]
+});
 const createError = require("http-errors");
 // const morgan = require("morgan");
 const cors = require("cors");
