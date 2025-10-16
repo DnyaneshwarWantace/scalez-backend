@@ -38,7 +38,7 @@ module.exports = {
         res.status(200).json({
           message: "Users retrieved successfully",
           users: users,
-          limit: user.role.name?.toLowerCase() === "owner" ? user.limit : user.owner.limit,
+          limit: user.role.name?.toLowerCase() === "owner" ? user.limit || 0 : user.owner?.limit || 0,
         });
       } 
       else if (user.role?.name.toLowerCase() !== "owner") {
@@ -54,7 +54,7 @@ module.exports = {
         res.status(200).json({
           message: "Users retrieved successfully",
           users: users,
-          limit: user.owner.limit,
+          limit: user.owner?.limit || 0,
         });
       } 
       else {
