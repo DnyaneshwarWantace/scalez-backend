@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const Controller = require("../controllers/Model.Controller");
+const { verifyAccessToken } = require("../helpers/jwt_helper");
+
+router.post("/create", verifyAccessToken, Controller.create);
+router.get("/read", verifyAccessToken, Controller.read);
+router.get("/read/:id", verifyAccessToken, Controller.readSingle);
+router.put("/update/:id", verifyAccessToken, Controller.update);
+router.delete("/delete/:id", verifyAccessToken, Controller.delete);
+
+module.exports = router;
